@@ -1,0 +1,177 @@
+/* ------------------------------------------------ */
+/* ---------- ROOT VARIABLES (colors) ------------- */
+/* ------------------------------------------------ */
+
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --card: #f3f3f3;
+    --border: #dddddd;
+}
+
+body.dark {
+    --bg: #111111;
+    --text: #eeeeee;
+    --card: #1b1b1b;
+    --border: #333333;
+}
+
+/* ------------------------------------------------ */
+/* ---------- GLOBAL + FONT + BACKGROUND ---------- */
+/* ------------------------------------------------ */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+
+    /* ALL OVER CAMADE PATTERN */
+    background-image: url("assets/camade.png");
+    background-repeat: repeat;
+    background-size: 200px;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: var(--bg); /* taustaväri patternin alle */
+}
+
+h1 {
+    text-align: center;
+}
+
+/* ------------------------------------------------ */
+/* --------------------- HEADER ------------------- */
+/* ------------------------------------------------ */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+/* ---------- THEME BUTTON ---------- */
+
+.theme-btn,
+.add-btn {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.theme-btn:hover,
+.add-btn:hover {
+    opacity: 0.8;
+}
+
+/* ------------------------------------------------ */
+/* ---------- ITEM GRID (other pages) ------------- */
+/* ------------------------------------------------ */
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.item-grid .item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* ------------------------------------------------ */
+/* ---------- HOME PAGE — BIG CAPSULE ------------- */
+/* ------------------------------------------------ */
+
+.home-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px; /* sopii ison logon kanssa */
+}
+
+.big-capsule {
+    width: 1350px;
+    padding: 60px 40px;
+    border: 8px solid #2e6f2e;
+    border-radius: 60px;
+
+    /* jotta pattern ei näy kapselin sisällä */
+    background: var(--bg);
+    backdrop-filter: blur(2px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------------ */
+/* ---------- BUTTON ROW INSIDE CAPSULE ----------- */
+/* ------------------------------------------------ */
+
+.button-row {
+    display: flex;
+    gap: 140px;
+}
+
+/* ------------------------------------------------ */
+/* ---------- BIG BUTTON + ICON ------------------- */
+/* ------------------------------------------------ */
+
+.big-button {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.big-button:hover {
+    transform: scale(1.08);
+}
+
+.big-icon {
+    position: relative;
+    z-index: 5;
+    width: 250px;
+    pointer-events: none;
+}
+
+/* ------------------------------------------------ */
+/* ---------------- SPLATTER EFFECT --------------- */
+/* ------------------------------------------------ */
+
+.splatter-effect {
+    position: absolute;
+    width: 350px;
+    height: auto;
+    left: -50px;
+    top: -40px;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+
+    /* maskaa pois kaikki ei-mustat pikselit */
+    -webkit-mask-image: url("assets/splatter.png");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+
+    /* tekee siitä täysin mustan ilman taustaa */
+    background: black;
+}
+
+
+.big-button:hover .splatter-effect {
+    opacity: 1;
+    transform: scale(1);
+}
