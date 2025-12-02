@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Camade Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- taustalla toistuva camade-logo jos käytät pattern-diviä myös tällä sivulla -->
+    <div class="pattern"></div>
+
+    <main class="editor-wrapper">
+
+        <div class="editor-train">
+            <!-- VASEN VAUNU -->
+            <img src="assets/train_left.png" alt="Vasen juna" class="train-side">
+
+            <!-- KESKIVAUNU, TAUSTANA train_middle.png -->
+            <div class="center-car">
+                <div class="center-car-inner">
+                    <!-- TÄMÄ ON VARSINAINEN IKKUNA, JOSSA CANVAS ASUU -->
+                    <div class="canvas-window">
+                        <canvas id="editorCanvas"></canvas>
+
+                        <!-- MAGIC ERASER / THRESHOLD POPUP (jos sun JS käyttää tätä) -->
+                        <div id="thresholdPopup" class="threshold-popup">
+                            <span>Taustan poisto-raja</span>
+                            <input id="thresholdSlider" type="range" min="0" max="255" value="180">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OIKEA VAUNU -->
+            <img src="assets/train_right.png" alt="Oikea juna" class="train-side">
+        </div>
+
+        <!-- VANHA TOOLBAR JUNAN ALLA (voit muokata myöhemmin vaunun sisään, mutta tää toimii heti) -->
+        <div class="editor-toolbar">
+            <button class="tool-btn" data-tool="wand">
+                <img src="assets/wand_button.png" alt="Magic wand">
+            </button>
+            <button class="tool-btn" data-tool="lasso">
+                <img src="assets/lasso_button.png" alt="Lasso">
+            </button>
+            <button class="tool-btn" data-tool="undo">
+                <img src="assets/undo_button.png" alt="Undo">
+            </button>
+            <button class="tool-btn" data-tool="reset">
+                <img src="assets/reset_button.png" alt="Reset">
+            </button>
+            <button class="tool-btn" data-tool="zoom-in">
+                <img src="assets/zoom_in_button.png" alt="Zoom in">
+            </button>
+            <button class="tool-btn" data-tool="zoom-out">
+                <img src="assets/zoom_out_button.png" alt="Zoom out">
+            </button>
+            <button class="tool-btn" data-tool="save">
+                <img src="assets/floppy_button.png" alt="Tallenna">
+            </button>
+        </div>
+
+    </main>
+
+    <script src="editor.js"></script>
+</body>
+</html>

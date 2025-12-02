@@ -3,17 +3,10 @@
 /* ------------------------------------------------ */
 
 :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --card: #f3f3f3;
-    --border: #dddddd;
-}
-
-body.dark {
-    --bg: #111111;
-    --text: #eeeeee;
-    --card: #1b1b1b;
-    --border: #333333;
+    --bg: #0f0f0f; 
+    --text: #ffffff;
+    --card: #1a1a1a;
+    --border: #222222;
 }
 
 /* ------------------------------------------------ */
@@ -24,15 +17,8 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text);
-    transition: background 0.3s ease, color 0.3s ease;
-
-    /* ALL OVER CAMADE PATTERN */
-    background-image: url("assets/camade.png");
-    background-repeat: repeat;
-    background-size: 200px;
-    background-position: center;
-    background-attachment: fixed;
-    background-color: var(--bg); /* taustaväri patternin alle */
+    background-color: var(--bg);
+    overflow-x: hidden;
 }
 
 h1 {
@@ -49,8 +35,6 @@ header {
     align-items: center;
     padding: 15px 25px;
 }
-
-/* ---------- THEME BUTTON ---------- */
 
 .theme-btn,
 .add-btn {
@@ -70,62 +54,50 @@ header {
 }
 
 /* ------------------------------------------------ */
-/* ---------- ITEM GRID (other pages) ------------- */
+/* ---------------- CAMADE PATTERN BG ------------- */
 /* ------------------------------------------------ */
 
-.item-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-    padding: 20px;
-}
-
-.item-grid .item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
+.pattern {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("assets/camade.png");
+    background-repeat: repeat;
+    background-size: 120px;
+    opacity: 0.07;
 }
 
 /* ------------------------------------------------ */
-/* ---------- HOME PAGE — BIG CAPSULE ------------- */
+/* ---------------- HOME PAGE --------------------- */
 /* ------------------------------------------------ */
 
 .home-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 60px; /* sopii ison logon kanssa */
+    margin-top: 60px;
 }
 
 .big-capsule {
     width: 1350px;
     padding: 60px 40px;
-    border: 8px solid #2e6f2e;
-    border-radius: 60px;
-
-    /* jotta pattern ei näy kapselin sisällä */
-    background: var(--bg);
-    backdrop-filter: blur(2px);
-
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/* ------------------------------------------------ */
-/* ---------- BUTTON ROW INSIDE CAPSULE ----------- */
-/* ------------------------------------------------ */
 
 .button-row {
     display: flex;
     gap: 140px;
 }
 
-/* ------------------------------------------------ */
-/* ---------- BIG BUTTON + ICON ------------------- */
-/* ------------------------------------------------ */
+/* --------- HOME BUTTONS + SPLATTER EFFECT ------- */
 
 .big-button {
     position: relative;
@@ -146,32 +118,185 @@ header {
     pointer-events: none;
 }
 
-/* ------------------------------------------------ */
-/* ---------------- SPLATTER EFFECT --------------- */
-/* ------------------------------------------------ */
-
 .splatter-effect {
     position: absolute;
     width: 350px;
-    height: auto;
+    height: 350px;
     left: -50px;
     top: -40px;
-    z-index: 1;
     opacity: 0;
     transform: scale(0.8);
     transition: opacity 0.35s ease, transform 0.35s ease;
 
-    /* maskaa pois kaikki ei-mustat pikselit */
     -webkit-mask-image: url("assets/splatter.png");
+    mask-image: url("assets/splatter.png");
     -webkit-mask-size: contain;
+    mask-size: contain;
     -webkit-mask-repeat: no-repeat;
-
-    /* tekee siitä täysin mustan ilman taustaa */
-    background: black;
+    mask-repeat: no-repeat;
+    background-color: #000;
 }
-
 
 .big-button:hover .splatter-effect {
     opacity: 1;
     transform: scale(1);
+}
+
+/* Eri kokoversiot */
+.splatter-wardrobe { width: 430px; height: 430px; left: -90px; top: -90px; }
+.splatter-outfit   { width: 380px; height: 380px; left: -70px; top: -70px; }
+.splatter-upload   { width: 380px; height: 380px; left: -70px; top: -70px; }
+
+/* ------------------------------------------------ */
+/* -------------------- UPLOAD -------------------- */
+/* ------------------------------------------------ */
+
+.upload-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.upload-box {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 380px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.upload-preview {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: none;
+}
+
+/* ------------------------------------------------ */
+/* -------------------- EDITOR -------------------- */
+/* ------------------------------------------------ */
+
+.editor-wrapper {
+    min-height: 100vh;
+    padding: 30px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background: #050505;
+}
+
+/* JUNA RIVI */
+
+.editor-train {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 95vw;
+    gap: 0;
+}
+
+.train-side {
+    width: 33.333%;
+    height: auto;
+    display: block;
+}
+
+/* KESKIVAUNU */
+
+.center-car {
+    width: 33.333%;
+    position: relative;
+}
+
+.center-car-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* neliö */
+    background-image: url("assets/train_middle.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* CANVAS IKKUNA (suhteluvaihtoehto PNG:stä laskettu) */
+
+.canvas-window {
+    position: absolute;
+    left: 25.9%;
+    top: 14.7%;
+    width: 48.8%;
+    height: 55.7%;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 0 28px rgba(0, 0, 0, 0.8);
+    background: #050505;
+}
+
+#editorCanvas {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    image-rendering: crisp-edges;
+    transform-origin: center center;
+}
+
+/* THRESHOLD POPUP */
+
+.threshold-popup {
+    position: absolute;
+    right: 4%;
+    top: 6%;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #f5f5f5;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    backdrop-filter: blur(6px);
+    z-index: 5;
+}
+
+.threshold-popup input[type="range"] {
+    width: 140px;
+}
+
+/* TOOLBAR */
+
+.editor-toolbar {
+    width: min(1024px, 95vw);
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 14px 18px;
+    background: rgba(0,0,0,0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.tool-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.tool-btn img {
+    width: 70px;
+}
+
+.tool-btn:hover {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 12px rgba(255,255,0,0.8));
+}
+
+.tool-btn.active {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 25px rgba(255,255,0,1));
 }

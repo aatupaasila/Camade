@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lisää vaate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="upload-wrapper">
+
+        <h1>Lisää vaate</h1>
+
+        <div class="upload-box">
+
+            <!-- KUVAN ESIKATSELU -->
+            <img id="preview" class="upload-preview" alt="Preview">
+
+            <!-- TIEDOSTON VALINTA -->
+            <input type="file" id="fileInput" accept="image/*">
+
+            <!-- NIMI -->
+            <input type="text" id="itemName" placeholder="Vaatteen nimi">
+
+            <!-- KATEGORIA -->
+            <select id="category">
+                <option value="tops">Paita / Yläosa</option>
+                <option value="pants">Housut</option>
+                <option value="outerwear">Takki</option>
+                <option value="shoes">Kengät</option>
+                <option value="accessories">Asusteet</option>
+            </select>
+
+            <button id="continueBtn" class="add-btn">Jatka editoriin</button>
+        </div>
+
+    </main>
+
+    <script src="upload.js"></script>
+
+</body>
+</html>
